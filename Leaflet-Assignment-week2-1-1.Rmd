@@ -1,0 +1,42 @@
+---
+title: "Map of Africa"
+author: "Student!"
+date: "9/8/2020"
+output: html_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+#Load the needed libraries and create the maps targeting a specific location in Africa.
+
+```{r, echo=FALSE}
+library(leaflet)
+A_A_map <- leaflet() %>%
+        addTiles()
+A_A_map
+```
+
+
+#Adding Markers targeting a specific location on the generic map
+
+```{r}
+library(leaflet)
+Addis_Ababa <- A_A_map %>%
+addMarkers(lat = 8.9806 , lng = 38.7578, popup = "Addis_Ababa")
+Addis_Ababa
+```
+
+
+
+```{r, echo=FALSE}
+A_A_mapLatLng = data.frame(
+  lat = c(9.6, 8.45, 8.57, 9.22, 9.8, 10.00),
+  lng = c(38.46, 38.59, 38.43, 38.44, 39.00, 39.20))
+
+A_A_mapLatLng %>%
+        leaflet() %>%
+        addTiles() %>%
+        addMarkers(clusterOptions = markerClusterOptions())
+````
